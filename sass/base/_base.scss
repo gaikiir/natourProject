@@ -1,0 +1,40 @@
+/* ==========global css reset========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html{
+  // i want to use 10 => 10/16(default font-size) => 0.625*100 = 62.5%|| 1rem => 10px
+  font-size: 62.5%; 
+  scroll-behavior: smooth;
+
+   @include respond(land){
+    // 1rem = 9px || 9/16 * 100 =>  56.25%
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port){
+    // i want  1rem = 8px || 8/16 = 0.5 *100 => 50%
+    font-size: 50%;
+  }
+
+
+  @include respond(big-desktop){
+    // 1rem = 12px  12/16 * 100 => 75%
+    font-size: 75%;
+  }
+}
+
+  
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+   @include respond(tab-port){
+    padding: 0;
+  }
+}
+

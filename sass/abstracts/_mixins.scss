@@ -1,0 +1,74 @@
+@mixin clearfix{
+    &::after{
+        content: "";
+        display: flow-root;
+        clear: both;
+    }
+}
+
+@mixin positionCentered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+//=============MEDIA QUERIES MANAGER================
+/*
+0 - 600px => phones 
+600px - 900px => tablet potrait
+900px - 1200px => tablet landscape
+
+[1200px - 1800px] is where our normal css tyles is apply
+
+1800p + => big desktop screen
+
+    $breakpoint argument choices
+ -phone
+ -tab-port
+ -land
+ -big-desktop
+
+    ==============medie query for phone===============
+
+    ===========if directives=============
+    /*
+
+    converting 
+    1em => 16px font-size coming from browser by default
+    we want our media queries to be affect browser
+
+    */ 
+    @mixin respond($breakpoint){
+        @if($breakpoint == phone){
+             // 600/16 => 37.5em
+            @media (max-width:37.5em){ 
+                @content
+             };
+        }
+
+        @if($breakpoint == tab-port){
+            // 900/16 => 56.25em
+             @media (max-width:56.25em){
+                 @content
+                 };
+        }
+
+        @if($breakpoint == land){
+            // 1200/16 => 75em
+              @media (max-width:75em){
+                 @content 
+                };
+        }
+
+        @if($breakpoint == big-desktop){
+            // 1800/16 =>  112.5em
+             @media (min-width:112.5em){
+                 @content 
+            };
+        }
+    }
+    
+    
+
